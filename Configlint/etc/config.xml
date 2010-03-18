@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Alanstormdotcom_Configlint>
+			<version>0.1.0</version>
+		</Alanstormdotcom_Configlint>		
+	</modules>
+	
+	<frontend>
+        <routers>
+            <configlint>
+                <use>standard</use>
+                <args>
+                    <module>Alanstormdotcom_Configlint</module>
+                    <frontName>configlint</frontName>
+                </args>
+            </configlint>
+        </routers>	
+	</frontend>
+	
+	<global>  	
+		<models>
+			<configlint>
+				<class>Alanstormdotcom_Configlint_Model</class>
+			</configlint>				
+		</models>
+		
+		<helpers>
+			<configlint>
+				<class>Alanstormdotcom_Configlint_Helper</class>
+			</configlint>
+		</helpers>
+	</global>	
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Alanstormdotcom_Linttemplate>
+			<version>0.1.0</version>
+		</Alanstormdotcom_Linttemplate>
+	</modules>
+	
+	<global>        
+		<helpers>
+			<linttemplate>
+				<class>Alanstormdotcom_Linttemplate_Helper</class>
+			</linttemplate>
+		</helpers>
+		
+		<models>
+			<linttemplate>
+				<class>Alanstormdotcom_Linttemplate_Model</class>
+			</linttemplate>
+		</models>
+		
+	</global>
+</config>
