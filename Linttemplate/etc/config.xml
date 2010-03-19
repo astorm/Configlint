@@ -15,7 +15,7 @@
 		
 		<models>
 			<linttemplate>
-				<class>Alanstormdotcom_Linttemplate_Model</class>
+				<class>Alanstormdotcom_Linttemplate_model</class>
 			</linttemplate>
 		</models>
 		

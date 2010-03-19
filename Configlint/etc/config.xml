@@ -30,5 +30,18 @@
 				<class>Alanstormdotcom_Configlint_Helper</class>
 			</configlint>
 		</helpers>
+		
+		<events>
+			<controller_front_init_routers>
+				<observers>
+					<alanstormdotcom_configlint_model_observer>
+						<type>singleton</type>
+						<class>Alanstormdotcom_Configlint_Model_Configviewer_Observer</class>
+						<method>checkForConfigRequest</method>
+					</alanstormdotcom_configlint_model_observer>
+				</observers>
+			</controller_front_init_routers>
+		</events>
+		
 	</global>	
 </config>

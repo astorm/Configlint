@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<lints>
-<!-- 
 		<unique_identifier>
 			<helper_class>linttemplate/lints_example</helper_class>
 		</unique_identifier>		
- -->
 		
 		<unique_identifier_2>
 			<helper_class>linttemplate/lints_codepoolcase</helper_class>
