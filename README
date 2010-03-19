@@ -2,6 +2,11 @@ README Will Go Here
 --------------------------------------------------
 Tested with Magento 1.4.x, Community Edition.  Reports from the Land of Enterprise and 1.3.x are welcome.
 
+The Configlint and Linttemplate folders should be placed in 
+
+	app/code/local/Alanstormdotcom
+
+File organization is on THE LIST!
 
 License
 --------------------------------------------------
