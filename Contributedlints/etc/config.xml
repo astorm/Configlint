@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Alanstormdotcom_Contributedlints>
+			<version>0.1.0</version>
+		</Alanstormdotcom_Contributedlints>
+	</modules>
+	
+	<global>
+		<models>
+			<contributedlints>
+				<class>Alanstormdotcom_Contributedlints_Model</class>
+			</contributedlints>				
+		</models>
+		
+		<helpers>
+			<contributedlints>
+				<class>Alanstormdotcom_Contributedlints_Helper</class>
+			</contributedlints>
+		</helpers>	
+	</global>
+</config>
