@@ -5,7 +5,7 @@
 		</is_valid_xml>		
 		<top_level_elements>
 			<helper_class>configlint/lints_xmlstructure</helper_class>
-		</top_level_elements>		
+		</top_level_elements>	
 	</lints>
 </config>
 
