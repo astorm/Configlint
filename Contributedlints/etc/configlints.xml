@@ -1,0 +1,9 @@
+<config>
+	<lints>
+		<!-- Test classfiles for compliance with Magento's __autoloader naming convention -->
+		<classfiles>
+			<helper_class>contributedlints/lints_classfiles</helper_class>
+		</classfiles>							
+	</lints>
+</config>
+
