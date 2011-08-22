@@ -29,11 +29,13 @@
 
 class Alanstormdotcom_Contributedlints_Helper_ExtensionFilter extends FilterIterator {
     private $_extension;
-    public function  __construct(Iterator $it,$extension) {
+    public function  __construct(Iterator $it,$extension) 
+    {
         parent::__construct($it);
         $this->_extension=$extension;
     }
-    public function accept() {
+    public function accept() 
+    {
         return $this->_extension == pathinfo($this->current(),PATHINFO_EXTENSION);
     }
 }

@@ -48,37 +48,47 @@ class Alanstormdotcom_Contributedlints_Helper_Lints_Classfiles extends Alanstorm
          $classTypes = array ('Model', 'Block', 'Helper');
          $autoloader = new Alanstormdotcom_Contributedlints_Helper_Autoload;
          
-         if (self::PRINT_FILES) {
+         if (self::PRINT_FILES) 
+         {
                  echo "<pre>";
          }
          $modules = $config->modules;
-         foreach ( $modules->children() as $moduleName => $module) {
+         foreach ( $modules->children() as $moduleName => $module) 
+         {
 
              $extDir = Mage::getConfig()->getModuleDir('', $moduleName);
-             if (self::PRINT_FILES) {
+             if (self::PRINT_FILES) 
+             {
                      echo $moduleName.": \n\t".$extDir."\n";
              }
-             if (!is_dir($extDir)) {
+             if (!is_dir($extDir)) 
+             {
                      $errors[] = 'Missing directory '.$extDir.' for module '.$moduleName; 
                      continue;   
              }
-             foreach ($classTypes as $classType ) {
+             foreach ($classTypes as $classType ) 
+             {
                  $typeDir = Mage::getConfig()->getModuleDir('', $moduleName).DS.$classType;
                  try {
-                     foreach( new Alanstormdotcom_Contributedlints_Helper_ExtensionFilter(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($typeDir)),'php') as $item ) {
-                         if (self::PRINT_FILES) {
+                     foreach( new Alanstormdotcom_Contributedlints_Helper_ExtensionFilter(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($typeDir)),'php') as $item ) 
+                     {
+                         if (self::PRINT_FILES) 
+                         {
                                  echo "\t\t".str_replace($extDir,'',$item)."\n";
                          };
                          $fileContent = file_get_contents($item);
                          preg_match_all('/\s*class\s+([a-zA-Z0-9_]+)/', $this->removeFileComments($fileContent), $matches);
-                         if (sizeof($matches[1]) == 0) {
+                         if (sizeof($matches[1]) == 0) 
+                         {
                                  $warnings[] = 'no class found in file '.$item; //could be interface
                                  continue;
                          }
-                         if (sizeof($matches[1]) >1 ) {
+                         if (sizeof($matches[1]) >1 ) 
+                         {
                                  //if "class" appears in code not commented out it will also be matched
                                  //ignore known occurence in tax extension
-                                 if ( trim($matches[1][0]) != 'Mage_Tax_Model_Mysql4_Rule' && trim($matches[1][0]) != 'Alanstormdotcom_Contributedlints_Helper_Lints_Classfiles') {
+                                 if ( trim($matches[1][0]) != 'Mage_Tax_Model_Mysql4_Rule' && trim($matches[1][0]) != 'Alanstormdotcom_Contributedlints_Helper_Lints_Classfiles') 
+                                 {
                                          $errors[] = $item . ' contains multiple classes'; 
                                  }
                          }
@@ -120,11 +130,13 @@ class Alanstormdotcom_Contributedlints_Helper_Lints_Classfiles extends Alanstorm
 
                          $classFile = $autoloader->getClassFile(trim($matches[1][0]));
 
-                         if (trim($fileContent) != trim($classFile)) {
+                         if (trim($fileContent) != trim($classFile)) 
+                         {
                                  $errors[] = 'Class content from file '. $item . ' is different to class loaded via Magento. Possible explanations: <br/>1.) Class is overridden in /app/code/local/Mage or /app/code/community/Mage <br/>2.) Class name '.$matches[1][0].' should be in a different file/folder.'; 
                          }                                                   
                      }
-                 } catch (Exception $e) {
+                 } catch (Exception $e) 
+                 {
                      $warnings[] = 'Missing directory '.$typeDir.' for module '.$moduleName;
                      //TODO: check against config.xml if blocks, helper or models are defined
                  }
@@ -178,7 +190,8 @@ class Alanstormdotcom_Contributedlints_Helper_Lints_Classfiles extends Alanstorm
         $known_bad = $this->fetchKnownBadCoreClasses();
         foreach($known_bad as $bad)
         {
-             if (strpos($class,$bad) === 0) {
+             if (strpos($class,$bad) === 0) 
+             {
                 return true;
              }
         
@@ -190,14 +203,17 @@ class Alanstormdotcom_Contributedlints_Helper_Lints_Classfiles extends Alanstorm
     public function removeFileComments($fileStr)
     {    
         $withoutComments = '';
-        foreach (token_get_all($fileStr) as $token ) {  
+        foreach (token_get_all($fileStr) as $token ) 
+        {  
              $commentTokens = array(T_COMMENT); 
              if (defined('T_DOC_COMMENT'))
              $commentTokens[] = T_DOC_COMMENT;
              if (defined('T_ML_COMMENT'))
              $commentTokens[] = T_ML_COMMENT;
-             if (is_array($token)) {
-                 if (in_array($token[0], $commentTokens)) {
+             if (is_array($token)) 
+             {
+                 if (in_array($token[0], $commentTokens)) 
+                 {
                          continue;
                  }  
                 $token = $token[1];

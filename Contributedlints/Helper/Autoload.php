@@ -64,7 +64,7 @@ class Alanstormdotcom_Contributedlints_Helper_Autoload extends Varien_Autoload
             }
         }
         
-        if ($found) 
+        if ($found)
         {
             return file_get_contents($classFile);
         } 
