@@ -1,43 +1,45 @@
 <?php
-// 	Copyright (c) 2010 Alan Storm
-// 	
-// 	Permission is hereby granted, free of charge, to any person obtaining a copy
-// 	of this software and associated documentation files (the "Software"), to deal
-// 	in the Software without restriction, including without limitation the rights
-// 	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// 	copies of the Software, and to permit persons to whom the Software is
-// 	furnished to do so, subject to the following conditions:
-// 	
-// 	The above copyright notice and this permission notice shall be included in
-// 	all copies or substantial portions of the Software.
-// 	
-// 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// 	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// 	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// 	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// 	THE SOFTWARE.
+//  Copyright (c) 2010 Alan Storm
+//  
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 
+/**
+* Brain Dead reporter to start
+*/
+class Alanstormdotcom_Configlint_Helper_Reporter extends Mage_Core_Helper_Data
+{
+    public function report($runner)
+    {
+        $failures = $runner->getFails();
+        if(count($failures) == 0)
+        {
+            echo '<h1>All Passed</h1>';
+            echo '<h2> ' . count($runner->getPasses()).' Lint Cases passed</h2>';
+            return;
+        }
 
-	class Alanstormdotcom_Configlint_Helper_Reporter extends Mage_Core_Helper_Data
-	{
-		public function report($runner)
-		{
-			$failures = $runner->getFails();
-			if(count($failures) == 0)
-			{
-				echo '<h1>All Passed</h1>';
-				echo '<h2> ' . count($runner->getPasses()).' Lint Cases passed</h2>';
-				return;
-			}
-
-			echo '<h1 style="color:red"> Failures </h1>';						
-			echo '<ul>';
-			foreach($failures as $message)
-			{
-				echo '<li><span style="color:red"> ' . (string) $message .' </span></li>';
-			}
-			echo '</ul>';			
-		}
-	}
+        echo '<h1 style="color:red"> Failures </h1>';                       
+        echo '<ul>';
+        foreach($failures as $message)
+        {
+            echo '<li><span style="color:red"> ' . (string) $message .' </span></li>';
+        }
+        echo '</ul>';           
+    }
+}

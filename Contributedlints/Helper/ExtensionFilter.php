@@ -28,7 +28,6 @@
  */
 
 class Alanstormdotcom_Contributedlints_Helper_ExtensionFilter extends FilterIterator {
-
     private $_extension;
     public function  __construct(Iterator $it,$extension) {
         parent::__construct($it);

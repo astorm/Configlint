@@ -39,27 +39,38 @@ class Alanstormdotcom_Contributedlints_Helper_Autoload extends Varien_Autoload
      */
     public function getClassFile($class)
     {
-   $found = false;
-        if ($this->_collectClasses) {
+        $found = false;
+        if ($this->_collectClasses) 
+        {
             $this->_arrLoadedClasses[self::$_scope][] = $class;
         }
-        if ($this->_isIncludePathDefined) {
+        
+        if ($this->_isIncludePathDefined) 
+        {
             $classFile = $this->_collectPath.DS.$class;
-        } else {
+        } 
+        else 
+        {
             $classFile = str_replace(' ', DIRECTORY_SEPARATOR, ucwords(str_replace('_', ' ', $class)));
         }
-   $classFile .= '.php';
-   foreach (explode(PS, get_include_path()) as $inclPath) {
-       if (file_exists($inclPath.DS.$classFile) && !$found) {
-           $classFile = $inclPath.DS.$classFile;
-           $found = true;
-       }
-   }
-   if ($found) {
-          return file_get_contents($classFile);
-   } else {
-       return '';
-   }
+        $classFile .= '.php';
+        
+        foreach (explode(PS, get_include_path()) as $inclPath) 
+        {
+            if (file_exists($inclPath.DS.$classFile) && !$found) 
+            {
+                $classFile = $inclPath.DS.$classFile;
+                $found = true;
+            }
+        }
+        
+        if ($found) 
+        {
+            return file_get_contents($classFile);
+        } 
+        else 
+        {
+           return '';
+        }
     }
-
 }
